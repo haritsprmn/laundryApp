@@ -90,6 +90,7 @@ function tampilkanSubLayanan() {
   if (layanan === "Satuan") {
     inputBerat.style.display = "none";
     berat.removeAttribute("required");
+    berat.value = "";
     hargaWrapper.style.display = "none";
   } else {
     inputBerat.style.display = "block";
