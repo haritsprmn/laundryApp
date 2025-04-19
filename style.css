@@ -1,0 +1,18 @@
+/* Untuk Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem 1rem;
+  border-radius: 20px;
+}

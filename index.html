@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin laundry</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="justify-content-center align-items-center vh-100">
+    <div class="container">
+      <form action="https://sheetdb.io/api/v1/z69d10w7a80zb" method="post" id="sheetdb-form" class="needs-validation" novalidate>
+        <!-- Input Nama Pelanggan -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nama" placeholder="Nama ndesss" name="data[nama]" required />
+          <label for="nama">Nama</label>
+          <div class="invalid-feedback">Masukkan nama pelanggan!</div>
+        </div>
+
+        <!-- Input nomor whatsapp -->
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="whatsapp" placeholder="WA suuuu" onblur="cekNomorWAApi()" name="data[whatsapp]" required />
+          <label for="whatsapp">No Whatsapp</label>
+          <div class="invalid-feedback">Masukkan nomor WA!</div>
+          <div id="valid" style="display: none; color: green" role="alert">Nomor aktif</div>
+          <div id="invalid" style="display: none; color: red" role="alert">❌ Nomor tidak aktif</div>
+          <div id="token" style="display: none; color: #ffc107" role="alert">Token habis!</div>
+        </div>
+
+        <!-- Input Layanan -->
+        <div>
+          <select id="layanan" class="form-select" aria-label="Default select example" onchange="tampilkanSubLayanan()" name="data[layanan]" required>
+            <option selected disabled value="">-- Layanan --</option>
+            <option value="Cuci Komplit">Cuci Komplit</option>
+            <option value="Cuci Lipat">Cuci Lipat</option>
+            <option value="Satuan">Satuan</option>
+            <option value="Setrika">Setrika Saja</option>
+          </select>
+          <div class="invalid-feedback">Silahkan pilih layanan!</div>
+        </div>
+        <div class="mt-2" id="subLayananWrapper" style="display: none">
+          <select id="subLayanan" class="form-select" aria-label="Default select example" name="data[pilihan]" required></select>
+          <div class="invalid-feedback">Silahkan pilih jenis!</div>
+        </div>
+
+        <!-- Input Berat -->
+        <div id="inputBerat" class="form-floating mt-3" style="display: none">
+          <input type="number" class="form-control" id="berat" placeholder="Masukkan berat" oninput="hitungHarga()" name="data[berat]" required />
+          <label for="berat">Berat (Kg)</label>
+          <div class="invalid-feedback">Masukkan Berat!</div>
+        </div>
+
+        <!-- Input Total Harga (disembunyikan dulu) -->
+        <div id="hargaWrapper" class="form-floating mt-3" style="display: none">
+          <input type="text" class="form-control" id="totalHarga" placeholder="Total Harga" name="data[total_harga]" readonly />
+          <label for="totalHarga">Total Harga</label>
+        </div>
+
+        <!-- Status bayar -->
+        <div class="bayar mt-3">
+          <select class="form-select" aria-label="Default select example" name="data[status]" required>
+            <option selected disabled value="">-- Status Bayar --</option>
+            <option value="Lunas">Lunas</option>
+            <option value="Belum Lunas">Belum Lunas</option>
+          </select>
+          <div class="invalid-feedback">Silahkan pilih status!</div>
+        </div>
+
+        <!-- Hidden Input Invoice -->
+        <input type="hidden" id="invoiceCode" name="data[invoice]" />
+
+        <div class="form-check mt-3" id="checkboxWrapper" style="display: none">
+          <input class="form-check-input" type="checkbox" value="" id="checkDefault" />
+          <label class="form-check-label" style="color: #000" for="checkDefault"> click jika token habis, segera <a style="color: red" class="alert-link" href="https://wa.link/m3ry9d">Hubungi Owner</a> </label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
